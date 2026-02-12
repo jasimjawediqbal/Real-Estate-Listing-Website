@@ -3,9 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Prime Properties</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="container header-container">
+            
+            <div class="logo-section">
+                <img src="assets/images/logo.png" alt="Prime Properties logo" width="100" height="100" class="logo" loading="eager">
+                <h1>Prime Properties</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= FILTER SECTION ================= -->
+    <section class="filter-section">
+        <div class="container">
+            <h3>Filter Properties</h3>
+            <div class="filter-controls">
+                <label for="propertyTypeFilter">Type:</label>
+                <select id="propertyTypeFilter">
+                    <option value="">All</option>
+                    <option value="House">House</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Commercial">Commercial</option>
+                </select>
+
+                <label for="cityFilter">City:</label>
+                <select id="cityFilter">
+                    <option value="">All</option>
+                    <option value="Lahore">Lahore</option>
+                    <option value="Islamabad">Islamabad</option>
+                    <option value="Rawalpindi">Rawalpindi</option>
+                </select>
+
+                <label for="priceRangeFilter">Price:</label>
+                <select id="priceRangeFilter">
+                    <option value="">All</option>
+                    <option value="0-10000000">Up to PKR 10,000,000</option>
+                    <option value="10000001-20000000">PKR 10,000,000 - 20,000,000</option>
+                    <option value="20000001-30000000">PKR 20,000,000 - 30,000,000</option>
+                    <option value="30000001+">Above PKR 30,000,000</option>
+                </select>
+
+                <button id="resetFiltersBtn" type="button">Reset All Preferences</button>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- ================= PROPERTY LISTINGS ================= -->
+    <section class="property-listings">
+        <div class="container property-container">
+            <!-- Property cards will be dynamically injected here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- ================= PAGINATION ================= -->
+    <section class="pagination">
+        <div class="container">
+            <!-- Pagination links will be dynamically injected by JavaScript -->
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="container footer-main">
+            <div class="footer-brand">
+                <h3 class="footer-brand-title">
+                    <img src="assets/images/logo.png" alt="Prime Properties footer logo" class="footer-logo" loading="lazy">
+                    <span>PrimeProperties</span>
+                </h3>
+                <p>
+                    Prime Properties helps families and investors discover verified residential and commercial listings
+                    across Pakistan with trusted support at every step.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Pages</h4>
+                <a href="index.html">Home</a>
+                <a href="#">Properties</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+            </div>
+
+            <div class="footer-connect">
+                <h4>Connect</h4>
+                <a href="mailto:support@primeproperties.com">support@primeproperties.com</a>
+                <a href="tel:+923001112222">+92 300 1112222</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 PrimeProperties. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ================= SCRIPT ================= -->
+    <script src="assets/javascript/script.js"></script>
 </body>
 </html>
