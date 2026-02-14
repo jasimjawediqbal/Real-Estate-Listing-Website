@@ -20,24 +20,86 @@ body {
 
 /* ================= HEADER ================= */
 header {
-    background-color: #7F5539; /* brown */
-    color: #EDE0D4; /* cream */
-    padding: 20px 0;
+    background: linear-gradient(120deg, #7F5539, #5E3E29);
+    color: #EDE0D4;
+    padding: 14px 0;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+    position: sticky;
+    top: 0;
+    z-index: 1100;
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    letter-spacing: 0.3px;
 }
 
 .header-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 .logo-section {
     display: flex;
     align-items: center;
     gap: 12px;
+}
+
+.logo {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px;
+    border-radius: 999px;
+    background: rgba(237, 224, 212, 0.14);
+    border: 1px solid rgba(237, 224, 212, 0.36);
+    backdrop-filter: blur(5px);
+}
+
+.site-nav a {
+    text-decoration: none;
+    color: #EDE0D4;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    background-color: transparent;
+}
+
+.site-nav a:not(.active):hover {
+    background-color: rgba(237, 224, 212, 0.22);
+}
+
+.site-nav a.active {
+    background-color: #414833;
+    color: #fff;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.24);
+    animation: navItemSelect 0.3s ease;
+}
+
+.site-nav a:not(.active) {
+    color: #EDE0D4;
+}
+
+@keyframes navItemSelect {
+    0% {
+        transform: scale(0.94);
+    }
+    60% {
+        transform: scale(1.04);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* ================= FILTER SECTION ================= */
@@ -254,6 +316,189 @@ footer {
     font-size: 0.9rem;
 }
 
+.sell-bubble {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 140px;
+    height: 140px;
+    background-color: #7F5539;
+    color: #EDE0D4;
+    border: 1px solid rgba(237, 224, 212, 0.45);
+    border-radius: 0;
+    clip-path: circle(100% at 100% 100%);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
+    padding: 9px 9px 13px 40px;
+    z-index: 1200;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.sell-bubble p {
+    margin: 0;
+    font-size: 0.64rem;
+    font-weight: 600;
+    line-height: 1.25;
+    max-width: 74px;
+}
+
+.bubble-close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border: none;
+    background-color: #7F5539;
+    color: #EDE0D4;
+    border: 1.5px solid #EDE0D4;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bubble-close-btn:hover {
+    background-color: #996D4F;
+}
+
+.sell-bubble:focus {
+    outline: 2px solid #DDB892;
+    outline-offset: 2px;
+}
+
+.add-property-page {
+    padding: 44px 0 66px;
+    min-height: calc(100vh - 110px);
+}
+
+.add-property-card {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.13);
+    max-width: 920px;
+}
+
+.add-property-card h2 {
+    color: #414833;
+    margin-bottom: 6px;
+}
+
+.form-intro {
+    color: #6C6258;
+    margin-bottom: 22px;
+}
+
+.add-property-form {
+    width: 100%;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 18px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field-wide {
+    grid-column: 1 / -1;
+}
+
+.form-field label {
+    color: #433325;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    border: 1px solid #CFB79E;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    color: #333;
+    background-color: #fff;
+}
+
+.form-field textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: #7F5539;
+    box-shadow: 0 0 0 3px rgba(127, 85, 57, 0.14);
+}
+
+.field-error {
+    min-height: 16px;
+    margin: 0;
+    color: #B3261E;
+    font-size: 0.8rem;
+}
+
+.submit-property-btn {
+    margin-top: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #414833;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.98rem;
+    padding: 11px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-property-btn:hover {
+    background-color: #2E3224;
+}
+
+.submit-property-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.form-message {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    display: none;
+}
+
+.form-message.show {
+    display: block;
+}
+
+.form-message.success {
+    background-color: #E9F8EF;
+    border: 1px solid #B9E3C6;
+    color: #1F6A3D;
+}
+
+.form-message.error {
+    background-color: #FFECEC;
+    border: 1px solid #F4B6B6;
+    color: #9C1D1D;
+}
+
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
     .property-container {
@@ -263,11 +508,34 @@ footer {
     .footer-main {
         grid-template-columns: 1fr 1fr;
     }
+
+    header h1 {
+        font-size: 1.7rem;
+    }
+
+    .logo {
+        width: 62px;
+        height: 62px;
+    }
+
+    .site-nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .add-property-card {
+        padding: 22px;
+    }
 }
 
 @media (max-width: 480px) {
     header h1 {
-        font-size: 2rem;
+        font-size: 1.35rem;
     }
 
     .filter-section h3 {
@@ -293,5 +561,50 @@ footer {
 
     .footer-main {
         grid-template-columns: 1fr;
+    }
+
+    .header-container {
+        justify-content: center;
+    }
+
+    .logo {
+        width: 56px;
+        height: 56px;
+    }
+
+    .site-nav {
+        gap: 6px;
+        padding: 6px;
+    }
+
+    .site-nav a {
+        font-size: 0.86rem;
+        padding: 7px 10px;
+    }
+
+    .add-property-card {
+        padding: 16px;
+    }
+
+    .submit-property-btn {
+        width: 100%;
+    }
+
+    .sell-bubble {
+        width: 115px;
+        height: 115px;
+        padding: 7px 7px 10px 34px;
+    }
+
+    .sell-bubble p {
+        font-size: 0.56rem;
+        max-width: 58px;
+    }
+
+    .bubble-close-btn {
+        top: 6px;
+        right: 6px;
+        width: 18px;
+        height: 18px;
     }
 }

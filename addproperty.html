@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Property | Prime Properties</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo-section">
+                <img src="assets/images/logo.png" alt="Prime Properties logo" width="100" height="100" class="logo" loading="eager">
+                <h1>Prime Properties</h1>
+            </div>
+            <nav class="site-nav" aria-label="Primary">
+                <a href="index.html">Home</a>
+                <a href="index.html#listings">Listings</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="addproperty.html" class="active">Sell</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="add-property-page">
+        <div class="container add-property-card">
+            <h2>Add a Property Listing</h2>
+            <p class="form-intro">Fill in complete details to publish your property for buyers.</p>
+
+            <form id="addPropertyForm" class="add-property-form" enctype="multipart/form-data" novalidate>
+                <div class="form-grid">
+                    <div class="form-field form-field-wide">
+                        <label for="title">Property Title</label>
+                        <input id="title" name="title" type="text" maxlength="150" required>
+                        <p class="field-error" data-error-for="title"></p>
+                    </div>
+
+                    <div class="form-field form-field-wide">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" rows="4" maxlength="2000" required></textarea>
+                        <p class="field-error" data-error-for="description"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="price">Price (PKR)</label>
+                        <input id="price" name="price" type="number" min="1" step="0.01" required>
+                        <p class="field-error" data-error-for="price"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="area_marla">Area (Marla)</label>
+                        <input id="area_marla" name="area_marla" type="number" min="0.1" step="0.01" required>
+                        <p class="field-error" data-error-for="area_marla"></p>
+                    </div>
+
+                    <div class="form-field form-field-wide">
+                        <label for="location">Location / Society</label>
+                        <input id="location" name="location" type="text" maxlength="150" required>
+                        <p class="field-error" data-error-for="location"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="city">City</label>
+                        <select id="city" name="city" required>
+                            <option value="">Select city</option>
+                            <option value="Lahore">Lahore</option>
+                            <option value="Islamabad">Islamabad</option>
+                            <option value="Rawalpindi">Rawalpindi</option>
+                        </select>
+                        <p class="field-error" data-error-for="city"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="property_type">Property Type</label>
+                        <select id="property_type" name="property_type" required>
+                            <option value="">Select type</option>
+                            <option value="House">House</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Commercial">Commercial</option>
+                        </select>
+                        <p class="field-error" data-error-for="property_type"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="bedrooms">Bedrooms</label>
+                        <input id="bedrooms" name="bedrooms" type="number" min="0" max="20" step="1" required>
+                        <p class="field-error" data-error-for="bedrooms"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="bathrooms">Bathrooms</label>
+                        <input id="bathrooms" name="bathrooms" type="number" min="0" max="20" step="1" required>
+                        <p class="field-error" data-error-for="bathrooms"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="seller_name">Seller Name</label>
+                        <input id="seller_name" name="seller_name" type="text" maxlength="100" required>
+                        <p class="field-error" data-error-for="seller_name"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="seller_email">Seller Email</label>
+                        <input id="seller_email" name="seller_email" type="email" maxlength="100" required>
+                        <p class="field-error" data-error-for="seller_email"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="seller_phone">Seller Phone</label>
+                        <input id="seller_phone" name="seller_phone" type="text" maxlength="20" required>
+                        <p class="field-error" data-error-for="seller_phone"></p>
+                    </div>
+
+                    <div class="form-field form-field-wide">
+                        <label for="seller_description">Seller Description (Optional)</label>
+                        <textarea id="seller_description" name="seller_description" rows="3" maxlength="500"></textarea>
+                        <p class="field-error" data-error-for="seller_description"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="main_image">Main Image</label>
+                        <input id="main_image" name="main_image" type="file" accept="image/jpeg,image/png,image/webp" required>
+                        <p class="field-error" data-error-for="main_image"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="additional_images">Additional Images (Optional, up to 6)</label>
+                        <input id="additional_images" name="additional_images[]" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+                        <p class="field-error" data-error-for="additional_images"></p>
+                    </div>
+                </div>
+
+                <button id="submitPropertyBtn" class="submit-property-btn" type="submit">Submit Property</button>
+                <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </main>
+
+    <script src="assets/javascript/navbar.js"></script>
+    <script src="assets/javascript/add-property.js"></script>
+</body>
+</html>

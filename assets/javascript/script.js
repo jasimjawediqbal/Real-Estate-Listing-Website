@@ -163,5 +163,28 @@ resetFiltersBtn.addEventListener('click', () => {
     applyFilters();
 });
 
+const sellBubble = document.getElementById('sellBubble');
+const closeSellBubble = document.getElementById('closeSellBubble');
+
+if (sellBubble) {
+    sellBubble.addEventListener('click', () => {
+        window.location.href = 'addproperty.html';
+    });
+
+    sellBubble.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            window.location.href = 'addproperty.html';
+        }
+    });
+}
+
+if (sellBubble && closeSellBubble) {
+    closeSellBubble.addEventListener('click', (event) => {
+        event.stopPropagation();
+        sellBubble.style.display = 'none';
+    });
+}
+
 // ================= INITIAL LOAD =================
 fetchProperties();
