@@ -110,6 +110,7 @@ try {
     // Fetch properties
     $query = "SELECT * FROM properties";
     $query .= $whereSql;
+    $query .= " ORDER BY id DESC";
     $query .= " LIMIT $limit OFFSET $offset";
 
     $result = mysqli_query($conn, $query);
