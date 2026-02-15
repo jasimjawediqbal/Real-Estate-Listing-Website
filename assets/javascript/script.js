@@ -10,9 +10,7 @@ let currentPage = 1;
 let filters = {};
 
 function normalizeImagePath(path) {
-    if (typeof path !== 'string') {
-        return path;
-    }
+    if (typeof path !== 'string') return path;
 
     let normalizedPath = path.replace(/\\/g, '/');
     normalizedPath = normalizedPath.replace(/assets\/images\/images(\d+)\.jpg/i, 'assets/images/image$1.jpg');
@@ -32,12 +30,9 @@ function goToPage(page) {
 // ================= FETCH PROPERTIES =================
 async function fetchProperties(filters = {}, page = 1) {
     try {
-        // Build query string dynamically
         let query = `page=${page}`;
         for (const key in filters) {
-            if (filters[key]) {
-                query += `&${encodeURIComponent(key)}=${encodeURIComponent(filters[key])}`;
-            }
+            if (filters[key]) query += `&${encodeURIComponent(key)}=${encodeURIComponent(filters[key])}`;
         }
 
         const response = await fetch(`api/properties.php?${query}`);
@@ -51,12 +46,8 @@ async function fetchProperties(filters = {}, page = 1) {
             throw new Error(`Invalid JSON from ${response.url} (HTTP ${response.status}). First 180 chars: ${preview}`);
         }
 
-        if (!response.ok) {
-            throw new Error(data.error || `HTTP ${response.status}`);
-        }
-        if (data.error) {
-            throw new Error(data.error);
-        }
+        if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
+        if (data.error) throw new Error(data.error);
 
         const properties = Array.isArray(data.properties) ? data.properties : [];
         renderProperties(properties);
@@ -89,8 +80,13 @@ function renderProperties(properties) {
             <p>Location: ${property.location}, ${property.city}</p>
             <p>${property.bedrooms} Bedrooms | ${property.bathrooms} Bathrooms | ${property.area_marla} Marla</p>
             <p>Seller: ${property.seller_name}</p>
-            <a href="property-details.html?id=${property.id}">View Details</a>
+            <button class="details-btn" data-id="${property.id}">View Details</button>
         `;
+
+        // Add click event to redirect to property-details.html with the selected id
+        card.querySelector('.details-btn').addEventListener('click', () => {
+            window.location.href = `property-details.html?id=${property.id}`;
+        });
 
         propertyContainer.appendChild(card);
     });
@@ -100,41 +96,36 @@ function renderProperties(properties) {
 function renderPagination(totalPages, currentPage) {
     paginationContainer.innerHTML = '';
 
-    if (!totalPages || totalPages <= 1) {
-        return;
-    }
+    if (!totalPages || totalPages <= 1) return;
 
-    // Prev button
     if (currentPage > 1) {
         const prev = document.createElement('a');
         prev.href = '#';
         prev.textContent = 'Prev';
-        prev.addEventListener('click', (e) => {
+        prev.addEventListener('click', e => {
             e.preventDefault();
             goToPage(currentPage - 1);
         });
         paginationContainer.appendChild(prev);
     }
 
-    // Page numbers
     for (let i = 1; i <= totalPages; i++) {
         const pageLink = document.createElement('a');
         pageLink.href = '#';
         pageLink.textContent = i;
         if (i === currentPage) pageLink.style.backgroundColor = '#414833';
-        pageLink.addEventListener('click', (e) => {
+        pageLink.addEventListener('click', e => {
             e.preventDefault();
             goToPage(i);
         });
         paginationContainer.appendChild(pageLink);
     }
 
-    // Next button
     if (currentPage < totalPages) {
         const next = document.createElement('a');
         next.href = '#';
         next.textContent = 'Next';
-        next.addEventListener('click', (e) => {
+        next.addEventListener('click', e => {
             e.preventDefault();
             goToPage(currentPage + 1);
         });
@@ -142,6 +133,7 @@ function renderPagination(totalPages, currentPage) {
     }
 }
 
+// ================= FILTERS =================
 function applyFilters() {
     filters = {
         type: propertyTypeFilter.value,
@@ -163,6 +155,7 @@ resetFiltersBtn.addEventListener('click', () => {
     applyFilters();
 });
 
+// ================= SELL BUBBLE =================
 const sellBubble = document.getElementById('sellBubble');
 const closeSellBubble = document.getElementById('closeSellBubble');
 
@@ -171,7 +164,7 @@ if (sellBubble) {
         window.location.href = 'addproperty.html';
     });
 
-    sellBubble.addEventListener('keydown', (event) => {
+    sellBubble.addEventListener('keydown', event => {
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
             window.location.href = 'addproperty.html';
@@ -180,7 +173,7 @@ if (sellBubble) {
 }
 
 if (sellBubble && closeSellBubble) {
-    closeSellBubble.addEventListener('click', (event) => {
+    closeSellBubble.addEventListener('click', event => {
         event.stopPropagation();
         sellBubble.style.display = 'none';
     });
