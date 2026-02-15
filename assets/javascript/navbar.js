@@ -9,9 +9,25 @@
         return;
     }
 
+    const PAGE_ALIASES = {
+        '': 'index.html',
+        'index': 'index.html',
+        'add-property': 'addproperty.html',
+        'add-property.html': 'addproperty.html'
+    };
+
+    function normalizePage(page) {
+        const normalized = (page || '').trim().toLowerCase();
+        if (!normalized) {
+            return 'index.html';
+        }
+
+        return PAGE_ALIASES[normalized] || normalized;
+    }
+
     function getCurrentPage() {
         const page = window.location.pathname.split('/').pop();
-        return page || 'index.html';
+        return normalizePage(page);
     }
 
     function resolveHref(link) {
@@ -21,13 +37,13 @@
             const url = new URL(href, window.location.href);
             const page = url.pathname.split('/').pop() || 'index.html';
             return {
-                page,
+                page: normalizePage(page),
                 hash: url.hash || ''
             };
         } catch (error) {
             const split = href.split('#');
             return {
-                page: split[0] || 'index.html',
+                page: normalizePage(split[0] || 'index.html'),
                 hash: split[1] ? `#${split[1]}` : ''
             };
         }

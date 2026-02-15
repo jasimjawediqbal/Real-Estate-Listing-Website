@@ -70,7 +70,15 @@ function renderProperties(properties) {
     properties.forEach(property => {
         const card = document.createElement('div');
         card.classList.add('property-card');
+        card.setAttribute('role', 'link');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', `View details for ${property.title}`);
         const mainImage = normalizeImagePath(property.main_image);
+        const detailsUrl = `property-details.html?id=${property.id}`;
+
+        const openPropertyDetails = () => {
+            window.location.href = detailsUrl;
+        };
 
         card.innerHTML = `
             <img src="${mainImage}" alt="Property Image">
@@ -83,9 +91,25 @@ function renderProperties(properties) {
             <button class="details-btn" data-id="${property.id}">View Details</button>
         `;
 
-        // Add click event to redirect to property-details.html with the selected id
-        card.querySelector('.details-btn').addEventListener('click', () => {
-            window.location.href = `property-details.html?id=${property.id}`;
+        card.addEventListener('click', event => {
+            const target = event.target;
+            if (target instanceof Element && target.closest('button, a, input, textarea, select, label')) {
+                return;
+            }
+            openPropertyDetails();
+        });
+
+        card.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openPropertyDetails();
+            }
+        });
+
+        // Keep the explicit button action and prevent double-trigger via bubbling.
+        card.querySelector('.details-btn').addEventListener('click', event => {
+            event.stopPropagation();
+            openPropertyDetails();
         });
 
         propertyContainer.appendChild(card);

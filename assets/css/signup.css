@@ -366,6 +366,89 @@
             text-decoration: underline;
         }
 
+        .auth-message-box-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 2100;
+            opacity: 1;
+            transition: opacity 0.25s ease;
+        }
+
+        .auth-message-box-overlay.show {
+            display: flex;
+        }
+
+        .auth-message-box {
+            width: min(500px, 100%);
+            background: #fff;
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+            border-top: 6px solid #656D4A;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .auth-message-box-overlay.is-closing {
+            opacity: 0;
+        }
+
+        .auth-message-box-overlay.is-closing .auth-message-box {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .auth-message-box-overlay.slow-close,
+        .auth-message-box-overlay.slow-close .auth-message-box {
+            transition-duration: 0.9s;
+        }
+
+        .auth-message-box.is-success {
+            border-top-color: #2E7D32;
+        }
+
+        .auth-message-box.is-error {
+            border-top-color: #B3261E;
+        }
+
+        .auth-message-box.is-info {
+            border-top-color: #7F5539;
+        }
+
+        .auth-message-box-title {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+            color: #222;
+        }
+
+        .auth-message-box-body {
+            margin: 0;
+            color: #444;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        .auth-message-box-btn {
+            margin-top: 16px;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 10px;
+            background: #656D4A;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .auth-message-box-btn:hover {
+            background: #414833;
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .desktop-container {

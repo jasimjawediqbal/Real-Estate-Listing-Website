@@ -342,7 +342,7 @@ footer {
 
 .sell-bubble p {
     margin: 0;
-    font-size: 0.64rem;
+    font-size: 1rem;
     font-weight: 600;
     line-height: 1.25;
     max-width: 74px;
@@ -806,6 +806,24 @@ footer {
 
 .property-detail-seller div:last-child {
     margin-bottom: 0;
+}
+
+.property-contact-btn {
+    display: inline-block;
+    width: fit-content;
+    margin-top: 14px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background-color: #414833;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.property-contact-btn:hover,
+.property-contact-btn:focus {
+    background-color: #2E3224;
 }
 
 /* ================= RESPONSIVE ================= */

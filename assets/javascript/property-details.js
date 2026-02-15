@@ -7,17 +7,19 @@ const propertyId = params.get('id');
 if (!propertyId) {
     container.innerHTML = "<p>Invalid property ID.</p>";
 } else {
-    fetch(`api/properties.php?page=1&id=${propertyId}`)
+    fetch(`api/propertydetail.php?id=${encodeURIComponent(propertyId)}`)
         .then(res => res.json())
         .then(data => {
-            const property = Array.isArray(data.properties)
-                ? data.properties.find(p => p.id == propertyId)
-                : null;
+            const property = data && data.property ? data.property : null;
 
             if (!property) {
-                container.innerHTML = "<p>Property not found.</p>";
+                const errorMessage = data && data.error ? data.error : "Property not found.";
+                container.innerHTML = `<p>${errorMessage}</p>`;
                 return;
             }
+
+            const contactUrl = `contact.html?id=${encodeURIComponent(property.id)}`;
+            localStorage.setItem('lastViewedProperty', String(property.id));
 
             container.innerHTML = `
                 <div class="property-detail-wrapper">
@@ -62,6 +64,8 @@ if (!propertyId) {
                             <div><strong>Email:</strong> ${property.seller_email}</div>
                             <div><strong>Phone:</strong> ${property.seller_phone}</div>
                         </div>
+
+                        <a class="property-contact-btn" href="${contactUrl}">Contact Us</a>
 
                     </div>
 
