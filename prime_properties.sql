@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2026 at 12:48 PM
+-- Generation Time: Feb 15, 2026 at 08:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `prime_properties`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inquiries`
+--
+
+CREATE TABLE `inquiries` (
+  `id` int(11) NOT NULL,
+  `interest_type` varchar(20) DEFAULT NULL,
+  `fullname` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `contact_methods` varchar(100) DEFAULT NULL,
+  `preferred_datetime` datetime DEFAULT NULL,
+  `message` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `property_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `inquiries`
+--
+
+INSERT INTO `inquiries` (`id`, `interest_type`, `fullname`, `email`, `phone`, `contact_methods`, `preferred_datetime`, `message`, `created_at`, `property_id`) VALUES
+(1, 'buy', 'Abdullah', 'abdullaee77@gmail.com', '03411743714', 'phone', '2026-02-14 13:19:00', 'nothing', '2026-02-14 08:19:50', 0),
+(2, 'rent', 'fvfejrrb', 'd3yvyevubebe@gmail.com', 'ejbjrbu3', '', '2026-02-05 12:40:00', 'dmdbdds', '2026-02-15 07:41:09', 10);
 
 -- --------------------------------------------------------
 
@@ -63,9 +90,40 @@ INSERT INTO `properties` (`id`, `title`, `description`, `price`, `location`, `ci
 (9, '7 Marla Double Story House', 'Spacious 7 Marla double story house with balcony, terrace, and elegant interior.', 19800000.00, 'Gulshan Ravi', 'Lahore', 'House', 4, 4, 7.00, 'assets/images/image9.jpg', 'images/properties/house9_1.jpg,images/properties/house9_2.jpg', 'Kamran Iqbal', 'kamran@example.com', '03389990000', 'Trusted property advisor.', '2026-02-11 16:19:59'),
 (10, 'Commercial 5 Marla Plaza', 'Commercial 5 Marla building located in main market area, ideal for shops and offices.', 30000000.00, 'Main Market', 'Lahore', 'Commercial', 0, 2, 5.00, 'assets/images/image10.jpg', 'images/properties/house10_1.jpg,images/properties/house10_2.jpg', 'Zain Abbas', 'zain@example.com', '03490001111', 'Commercial property dealer.', '2026-02-11 16:19:59');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `google_id` varchar(255) DEFAULT NULL,
+  `profile_pic` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `google_id`, `profile_pic`) VALUES
+(1, 'Abdullah', 'glowwithme', 'dontglowwithme', NULL, NULL),
+(2, 'Abdullah Tanveer', 'abdullaee77@gmail.com', '', '108981249586056716147', 'https://lh3.googleusercontent.com/a/ACg8ocI3jwPjDATG7szwKcVczf3yP4LY4_SNr95V0q71tYxeKh6ZmfE=s96-c'),
+(3, 'Ali', 'glowwithme5', 'dontglowwithme', NULL, NULL),
+(4, 'ahmed', 'glowwithme@gmail.com', 'Abdullah_18&', NULL, NULL);
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `inquiries`
+--
+ALTER TABLE `inquiries`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `properties`
@@ -74,14 +132,33 @@ ALTER TABLE `properties`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `inquiries`
+--
+ALTER TABLE `inquiries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `properties`
 --
 ALTER TABLE `properties`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
