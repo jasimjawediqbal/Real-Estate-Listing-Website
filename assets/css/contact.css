@@ -9,16 +9,99 @@
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            height: 100vh;
+            min-height: 100vh;
+            height: auto;
+            display: flex;
+            flex-direction: column;
             overflow: auto;
+        }
+
+        .contact-page-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-page-header {
+            background: linear-gradient(120deg, #7F5539, #5E3E29);
+            color: #EDE0D4;
+            padding: 14px 0;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+            position: sticky;
+            top: 0;
+            z-index: 1100;
+        }
+
+        .contact-header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .contact-header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-header-brand h1 {
+            font-size: 2rem;
+            letter-spacing: 0.3px;
+            color: #EDE0D4;
+            margin: 0;
+        }
+
+        .contact-header-logo {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+        }
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px;
+            border-radius: 999px;
+            background: rgba(237, 224, 212, 0.14);
+            border: 1px solid rgba(237, 224, 212, 0.36);
+            backdrop-filter: blur(5px);
+        }
+
+        .site-nav a {
+            text-decoration: none;
+            color: #EDE0D4;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-weight: 600;
+            transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+            background-color: transparent;
+        }
+
+        .site-nav a:not(.active):hover {
+            background-color: rgba(237, 224, 212, 0.22);
+        }
+
+        .site-nav a.active {
+            background-color: #414833;
+            color: #fff;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.24);
+        }
+
+        .contact-main {
+            flex: 1;
+            display: flex;
         }
 
         .desktop-container {
             width: 100%;
-            min-height: 100vh;
+            min-height: 0;
             background: #fff;
             display: grid;
             grid-template-columns: 1fr 1fr;
+            flex: 1;
         }
 
         /* Left Panel - Property Info */
@@ -33,7 +116,7 @@
             color: #fff;
             position: relative;
             overflow-y: auto;
-            min-height: 100vh;
+            min-height: 0;
         }
 
         .property-content {
@@ -189,7 +272,7 @@
             background: #fff;
             position: relative;
             overflow-y: auto;
-            min-height: 100vh;
+            min-height: 0;
         }
 
         .form-header {
@@ -379,8 +462,149 @@
             text-decoration: underline;
         }
 
+        .message-box-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 2000;
+        }
+
+        .message-box-overlay.show {
+            display: flex;
+        }
+
+        .message-box {
+            width: min(520px, 100%);
+            background: #fff;
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+            border-top: 6px solid #656D4A;
+        }
+
+        .message-box.is-success {
+            border-top-color: #2E7D32;
+        }
+
+        .message-box.is-error {
+            border-top-color: #B3261E;
+        }
+
+        .message-box.is-info {
+            border-top-color: #7F5539;
+        }
+
+        .message-box-title {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+            color: #222;
+        }
+
+        .message-box-body {
+            margin: 0;
+            color: #444;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        .message-box-btn {
+            margin-top: 16px;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 10px;
+            background: #656D4A;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .message-box-btn:hover {
+            background: #414833;
+        }
+
+        .contact-site-footer {
+            background-color: #7F5539;
+            color: #EDE0D4;
+            padding: 36px 0 18px;
+            margin-top: 30px;
+        }
+
+        .contact-footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .contact-footer-brand-title {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+
+        .contact-footer-logo {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+        }
+
+        .contact-footer-brand p {
+            color: #E6D5C3;
+            max-width: 520px;
+        }
+
+        .contact-footer-links,
+        .contact-footer-connect {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .contact-footer-links h4,
+        .contact-footer-connect h4 {
+            margin-bottom: 6px;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .contact-footer-links a,
+        .contact-footer-connect a {
+            color: #EDE0D4;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-footer-links a:hover,
+        .contact-footer-connect a:hover {
+            color: #DDB892;
+        }
+
+        .contact-footer-bottom {
+            border-top: 1px solid rgba(237, 224, 212, 0.25);
+            margin-top: 20px;
+            padding-top: 12px;
+            text-align: center;
+        }
+
+        .contact-footer-bottom p {
+            margin: 0;
+            color: #E6D5C3;
+            font-size: 0.9rem;
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
+            .contact-footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
             .desktop-container {
                 grid-template-columns: 1fr;
             }
@@ -396,6 +620,23 @@
 
             .form-panel {
                 padding: 60px 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-header-brand h1 {
+                font-size: 1.7rem;
+            }
+
+            .contact-header-logo {
+                width: 62px;
+                height: 62px;
+            }
+
+            .site-nav {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
             }
         }
 
@@ -428,6 +669,35 @@
             .checkbox-group {
                 flex-direction: column;
                 gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-header-container {
+                justify-content: center;
+            }
+
+            .contact-header-brand h1 {
+                font-size: 1.35rem;
+            }
+
+            .contact-header-logo {
+                width: 56px;
+                height: 56px;
+            }
+
+            .site-nav {
+                gap: 6px;
+                padding: 6px;
+            }
+
+            .site-nav a {
+                font-size: 0.86rem;
+                padding: 7px 10px;
+            }
+
+            .contact-footer-grid {
+                grid-template-columns: 1fr;
             }
         }
 
