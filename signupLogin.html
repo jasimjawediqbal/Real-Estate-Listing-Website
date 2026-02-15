@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PropertyHub - Login & Sign Up</title>
+    <link rel="stylesheet" href="assets/css/signup.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+</head>
+
+<body>
+    <div class="desktop-container">
+        <!-- Left Panel - Branding -->
+        <div class="branding-panel">
+            <div class="branding-content">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <img src="assets/images/logo.png" alt="Prime Properties logo" width="250" height="250"
+                            class="logo" loading="eager">
+
+                    </div>
+                    <h1>Prime Properties</h1>
+                    <p>Your Trusted Real Estate Partner</p>
+                </div>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <span class="feature-text">Browse thousands of verified properties</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <span class="feature-text">Connect with trusted agents</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <span class="feature-text">Get personalized recommendations</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Forms -->
+        <div class="form-panel">
+            <div class="form-header">
+                <h2 id="formTitle">Create Account</h2>
+                <p id="formSubtitle">Get started with PropertyHub today</p>
+            </div>
+
+            <!-- Toggle Tabs -->
+            <div class="toggle-tabs">
+                <div class="tab-slider" id="tabSlider"></div>
+                <button type="button" class="tab-button active" id="signupTab" onclick="switchToSignup()">Sign
+                    Up</button>
+                <button type="button" class="tab-button" id="loginTab" onclick="switchToLogin()">Log In</button>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div class="form-container active" id="signupForm">
+                <form onsubmit="handleSignup(event)">
+                    <div class="input-group">
+                        <label for="signup-fullname">Full Name <span>*</span></label>
+                        <input type="text" id="signup-fullname" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="signup-username">Email <span>*</span></label>
+                        <input type="text" id="signup-username" placeholder="Choose email" required>
+                    </div>
+
+                    <!-- <div class="input-group">
+                        <label for="signup-password">Password <span>*</span></label>
+                        <input type="password" id="signup-password" placeholder="Create a strong password" required>
+                    </div> -->
+                    <div class="input-group password-group">
+    <label for="signup-password">Password <span>*</span></label>
+    <input type="password" id="signup-password" placeholder="Create a strong password" required>
+    <span class="toggle-password" onclick="togglePassword('signup-password', this)">
+       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+            <circle cx="12" cy="12" r="2.5"/>
+        </svg>
+    </span>
+</div>
+
+
+
+
+
+                    <button type="submit" class="submit-btn">Create Account</button>
+                </form>
+
+                <!-- Social Sign Up -->
+                <div class="divider">
+                    <span>or sign up with</span>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="social-btn" onclick="signUpWithGoogle()"
+                        aria-label="Sign up with Google">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                                fill="#4285F4" />
+                            <path
+                                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                                fill="#34A853" />
+                            <path
+                                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                                fill="#FBBC05" />
+                            <path
+                                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                                fill="#EA4335" />
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Login Form -->
+            <div class="form-container" id="loginForm">
+                <form onsubmit="handleLogin(event)">
+                    <div class="input-group">
+                        <label for="login-username">Email <span>*</span></label>
+                        <input type="text" id="login-username" placeholder="Enter your email" required>
+                    </div>
+
+                    <!-- <div class="input-group">
+                        <label for="login-password">Password <span>*</span></label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div> -->
+<div class="input-group password-group">
+    <label for="login-password">Password <span>*</span></label>
+    <input type="password" id="login-password" placeholder="Enter your password" required>
+    <span class="toggle-password" onclick="togglePassword('login-password', this)">
+       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+            <circle cx="12" cy="12" r="2.5"/>
+        </svg>
+    </span>
+</div>
+
+
+                    <div class="forgot-password">
+                        <a href="#" onclick="forgotPassword(event)">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Log In</button>
+                </form>
+
+                <!-- Social Login -->
+                <div class="divider">
+                    <span>or log in with</span>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="social-btn" onclick="loginWithGoogle()"
+                        aria-label="Log in with Google">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                                fill="#4285F4" />
+                            <path
+                                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                                fill="#34A853" />
+                            <path
+                                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                                fill="#FBBC05" />
+                            <path
+                                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                                fill="#EA4335" />
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer-text">
+                <a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+    <div id="g_id_onload" data-client_id="619721643105-lrh7n9l1rk52feknk2qhivosm8nqlc2m.apps.googleusercontent.com"
+        data-callback="handleCredentialResponse" data-auto_prompt="false">
+    </div>
+
+    <script src="assets/javascript/signuplogin.js"></script>
+
+</body>
+
+</html>
